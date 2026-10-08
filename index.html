@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zeeshan Raja | HTML &amp; CSS Front-End Developer</title>
+<meta name="description" content="Zeeshan Raja builds pixel-perfect, responsive websites with HTML and CSS. Available for freelance projects.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff4d8d'/%3E%3Cstop offset='.6' stop-color='%23ff9f43'/%3E%3Cstop offset='1' stop-color='%23ffd75e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M18 17h28v7L28 39h18v8H18v-7l18-15H18z' fill='%231b0a12'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--bg:#0b0610;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.1);--text:#f4eefb;--mute:#a99bbd;--pink:#ff4d8d;--org:#ff9f43;--amb:#ffd75e;--vio:#8b5cf6;--grad:linear-gradient(90deg,#ff4d8d,#ff9f43 60%,#ffd75e);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(620px 420px at 10% 5%,rgba(255,77,141,.22),transparent 70%),radial-gradient(560px 460px at 92% 25%,rgba(139,92,246,.24),transparent 70%),radial-gradient(520px 400px at 45% 100%,rgba(255,159,67,.14),transparent 70%)}
+.fd{font-family:Unbounded,Manrope,sans-serif}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:90}
+#glow{position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,141,.16),transparent 65%);pointer-events:none;z-index:-1;will-change:transform}
+/* preloader */
+#pre{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;text-align:center;transition:opacity .7s,visibility .7s;animation:preHide .7s 4.5s forwards}
+#pre.done{opacity:0;visibility:hidden}
+@keyframes preHide{to{opacity:0;visibility:hidden}}
+.pre-bar{width:220px;height:3px;background:rgba(255,255,255,.1);border-radius:9px;margin:18px auto 12px;overflow:hidden}
+.pre-bar i{display:block;height:100%;width:0;background:var(--grad)}
+/* cards */
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .15s ease-out,box-shadow .35s;transform-style:preserve-3d}
+.card>*{position:relative;z-index:1}
+.card::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:var(--grad);opacity:0;transition:opacity .35s;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);pointer-events:none}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(255,159,67,.16),transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{box-shadow:0 0 44px -10px rgba(255,77,141,.45)}.card:hover::before,.card:hover::after{opacity:1}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:999px;font-weight:600;font-size:.95rem;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn-p{background:var(--grad);color:#1b0a12;box-shadow:0 0 30px -6px rgba(255,77,141,.7)}
+.btn-g{border:1px solid var(--line);background:var(--card);color:var(--text)}.btn-g:hover{border-color:var(--pink);box-shadow:0 0 24px -6px rgba(255,77,141,.6)}
+.tag{font-size:.75rem;padding:.25rem .7rem;border-radius:999px;border:1px solid rgba(139,92,246,.45);background:rgba(139,92,246,.14);color:#d4c4ff}
+.bar{height:6px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:inherit;background:var(--grad);box-shadow:0 0 12px rgba(255,77,141,.6);transition:width 1.4s cubic-bezier(.2,.8,.2,1) .2s}
+.aos-animate .bar i{width:var(--w)}
+/* hero */
+.rise{display:block;overflow:hidden;padding-bottom:.08em}
+.rise>span{display:inline-block;transform:translateY(110%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d,1.8s)}
+@keyframes rise{to{transform:none}}
+.cursor::after{content:"|";margin-left:2px;color:var(--pink);animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+.dot{position:relative}.dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#34d399;animation:ping 1.8s infinite}
+@keyframes ping{to{transform:scale(2.6);opacity:0}}
+.orb{position:absolute;inset:6% 6%;border-radius:42% 58% 63% 37%/45% 40% 60% 55%;background:conic-gradient(from 0deg,#ff4d8d,#ff9f43,#ffd75e,#8b5cf6,#ff4d8d);filter:blur(38px);opacity:.55;animation:morph 9s ease-in-out infinite,spin 18s linear infinite}
+@keyframes morph{50%{border-radius:60% 40% 38% 62%/58% 55% 45% 42%}}@keyframes spin{to{transform:rotate(360deg)}}
+.chip{position:absolute;padding:.45rem .9rem;border-radius:999px;font-size:.8rem;font-weight:600;background:rgba(20,10,30,.7);border:1px solid var(--line);backdrop-filter:blur(8px);animation:fl 5s ease-in-out infinite;animation-delay:var(--fd,0s)}
+@keyframes fl{50%{transform:translateY(-14px)}}
+.marq{display:flex;width:max-content;animation:mq 28s linear infinite}.marq:hover{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.shine{position:relative;overflow:hidden}.shine::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg);animation:sh 4s ease-in-out infinite}
+@keyframes sh{60%,100%{left:130%}}
+nav a.l{color:var(--mute);transition:color .2s}nav a.l:hover{color:#fff}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amb);outline-offset:3px}
+/* AOS core (inlined; external stylesheets are blocked) */
+[data-aos]{opacity:0;transition-property:opacity,transform;transition-timing-function:cubic-bezier(.2,.7,.2,1);transition-duration:.8s}
+[data-aos].aos-animate{opacity:1;transform:none}
+[data-aos=fade-up]{transform:translate3d(0,44px,0)}[data-aos=fade-left]{transform:translate3d(44px,0,0)}[data-aos=fade-right]{transform:translate3d(-44px,0,0)}[data-aos=zoom-in]{transform:scale(.9)}
+@media (pointer:coarse){#glow{display:none}}
+@media (prefers-reduced-motion:reduce){[data-aos]{opacity:1!important;transform:none!important;transition:none!important}.rise>span{transform:none;animation:none}.marq,.orb,.chip,.shine::after,.dot::after{animation:none}.bar i{transition:none}#pre{display:none}}
+</style>
+</head>
+<body class="antialiased">
+<div id="prog"></div><div id="glow"></div>
+
+<div id="pre"><div>
+  <div class="fd text-5xl font-extrabold gt">ZR</div>
+  <div class="pre-bar"><i id="pb"></i></div>
+  <div class="fd text-sm" style="color:var(--mute)"><span id="pc">0</span>% &middot; Loading portfolio</div>
+</div></div>
+
+<header class="fixed top-0 inset-x-0 z-50" style="padding-top:env(safe-area-inset-top,0px)">
+  <nav class="mx-auto mt-3 max-w-6xl px-4"><div class="card !rounded-full flex items-center justify-between pl-5 pr-2 py-2">
+    <a href="#home" class="fd font-bold text-base tracking-tight">ZEESHAN<span class="gt">.R</span></a>
+    <div class="hidden md:flex gap-8 text-sm"><a class="l" href="#skills">Skills</a><a class="l" href="#services">Services</a><a class="l" href="#projects">Projects</a><a class="l" href="#process">Process</a><a class="l" href="#contact">Contact</a></div>
+    <a href="#contact" class="btn btn-p !py-2 !px-4 !text-sm"><i data-lucide="mail" class="w-4 h-4"></i>Hire me</a>
+  </div></nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="home" class="mx-auto max-w-6xl px-5 pt-36 pb-16 grid lg:grid-cols-[1.2fr_.8fr] gap-10 items-center">
+  <div>
+    <div data-aos="fade-up" class="card inline-flex items-center gap-3 !rounded-full px-4 py-2 text-sm"><span class="dot w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span class="text-emerald-300 font-semibold">Available for new projects</span></div>
+    <p class="mt-7 text-lg" style="color:var(--mute)" data-aos="fade-up" data-aos-delay="100">Hi, I'm <b style="color:var(--text)">Zeeshan Raja</b></p>
+    <h1 class="fd font-extrabold uppercase leading-[1.05] tracking-tight mt-2" style="font-size:clamp(2rem,6.2vw,4.6rem)">
+      <span class="rise"><span style="--d:1.8s">I build</span></span>
+      <span class="rise"><span style="--d:1.95s">pixel-perfect</span></span>
+      <span class="rise"><span style="--d:2.1s">websites with</span></span>
+      <span class="rise"><span class="gt" style="--d:2.25s">HTML &amp; CSS</span></span>
+    </h1>
+    <p class="mt-5 text-xl font-semibold" data-aos="fade-up" data-aos-delay="200">I'm a <span id="typed" class="cursor gt"></span></p>
+    <p class="mt-4 max-w-xl leading-relaxed" style="color:var(--mute)" data-aos="fade-up" data-aos-delay="260">I have 1 year of focused experience turning designs into clean, fast and fully responsive websites. I keep my code simple, finish on time and tell you honestly where your project stands, so you always know what to expect.</p>
+    <div class="mt-8 flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="320">
+      <a href="#projects" class="btn btn-p"><i data-lucide="folder-open" class="w-4 h-4"></i>See my work</a>
+      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=zeeshan.raja8892@gmail.com" target="_blank" rel="noopener" class="btn btn-g"><i data-lucide="mail" class="w-4 h-4"></i>Email me</a>
+    </div>
+    <div class="mt-10 grid grid-cols-3 gap-3 max-w-md" data-aos="fade-up" data-aos-delay="380">
+      <div class="card p-4"><div class="fd text-2xl font-bold gt"><span data-count="1">0</span>+</div><div class="text-xs mt-1" style="color:var(--mute)">Year experience</div></div>
+      <div class="card p-4"><div class="fd text-2xl font-bold gt"><span data-count="10">0</span>+</div><div class="text-xs mt-1" style="color:var(--mute)">Pages built</div></div>
+      <div class="card p-4"><div class="fd text-2xl font-bold gt"><span data-count="100">0</span>%</div><div class="text-xs mt-1" style="color:var(--mute)">Responsive</div></div>
+    </div>
+  </div>
+  <div data-aos="zoom-in" data-aos-delay="250" class="relative h-[380px] sm:h-[440px]">
+    <div class="orb"></div>
+    <div class="card absolute inset-x-4 top-1/2 -translate-y-1/2 overflow-hidden" style="background:rgba(14,8,22,.75)">
+      <div class="flex items-center gap-2 px-4 py-3 border-b" style="border-color:var(--line)"><i class="w-3 h-3 rounded-full bg-red-400/80"></i><i class="w-3 h-3 rounded-full bg-yellow-300/80"></i><i class="w-3 h-3 rounded-full bg-green-400/80"></i><span class="ml-2 text-xs" style="color:var(--mute)">style.css</span></div>
+<pre class="p-5 text-[12.5px] leading-6 overflow-x-auto" style="font-family:ui-monospace,Menlo,monospace"><span style="color:#ff9f43">.hero</span> {
+  <span style="color:#c4b5fd">display</span>: grid;
+  <span style="color:#c4b5fd">place-items</span>: center;
+  <span style="color:#c4b5fd">background</span>: <span style="color:#ffd75e">linear-gradient</span>(
+    <span style="color:#ff4d8d">#ff4d8d</span>, <span style="color:#ff9f43">#ff9f43</span>);
+  <span style="color:#c4b5fd">animation</span>: float <span style="color:#86efac">5s</span> infinite;
+}</pre>
+    </div>
+    <span class="chip" style="top:2%;left:2%;--fd:0s;color:#ff9f43">&lt;HTML5/&gt;</span>
+    <span class="chip" style="top:8%;right:0;--fd:.8s;color:#ff4d8d">{ CSS3 }</span>
+    <span class="chip" style="bottom:6%;left:0;--fd:1.6s;color:#ffd75e">Flexbox</span>
+    <span class="chip" style="bottom:2%;right:4%;--fd:2.4s;color:#c4b5fd">Grid</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="py-5 border-y overflow-hidden" style="border-color:var(--line);background:rgba(255,255,255,.025)"><div class="marq fd text-sm font-semibold" id="marq"></div></div>
+
+<!-- WHY ME -->
+<section class="mx-auto max-w-6xl px-5 pt-24">
+  <div data-aos="fade-up" class="max-w-2xl mb-10"><h2 class="fd text-3xl sm:text-4xl font-bold tracking-tight">Why clients <span class="gt">trust me</span></h2><p class="mt-3" style="color:var(--mute)">I'm early in my career, so I make up for it with care, honesty and effort on every project.</p></div>
+  <div id="why" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="mx-auto max-w-6xl px-5 pt-28">
+  <div data-aos="fade-up" class="max-w-2xl mb-10"><h2 class="fd text-3xl sm:text-4xl font-bold tracking-tight">My <span class="gt">skills</span></h2><p class="mt-3" style="color:var(--mute)">One year of daily practice in HTML and CSS, with real pages built from scratch.</p></div>
+  <div id="skills-grid" class="grid md:grid-cols-3 gap-6"></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="mx-auto max-w-6xl px-5 pt-28">
+  <div data-aos="fade-up" class="max-w-2xl mb-10"><h2 class="fd text-3xl sm:text-4xl font-bold tracking-tight">What I <span class="gt">do</span></h2><p class="mt-3" style="color:var(--mute)">Static websites that look sharp, load fast and work on every screen.</p></div>
+  <div id="services-grid" class="grid md:grid-cols-3 gap-6"></div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="mx-auto max-w-6xl px-5 pt-28">
+  <div data-aos="fade-up" class="max-w-2xl mb-10"><h2 class="fd text-3xl sm:text-4xl font-bold tracking-tight">Featured <span class="gt">projects</span></h2><p class="mt-3" style="color:var(--mute)">Three front-end builds made with HTML5 and CSS3 only. Hover the cards to see the effects.</p></div>
+  <div id="projects-grid" class="grid lg:grid-cols-3 gap-6"></div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="mx-auto max-w-6xl px-5 pt-28">
+  <div data-aos="fade-up" class="max-w-2xl mb-10"><h2 class="fd text-3xl sm:text-4xl font-bold tracking-tight">How we'll <span class="gt">work together</span></h2><p class="mt-3" style="color:var(--mute)">A simple four-step process, so you always know what happens next.</p></div>
+  <div id="steps" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="mx-auto max-w-4xl px-5 py-28">
+  <div data-aos="fade-up"><div class="card p-8 sm:p-14 text-center shine" style="box-shadow:0 0 80px -24px rgba(255,77,141,.55)">
+    <h2 class="fd text-3xl sm:text-5xl font-bold tracking-tight leading-tight">Got a website idea?<br><span class="gt">Let's build it.</span></h2>
+    <p class="mt-4 max-w-xl mx-auto" style="color:var(--mute)">Send me a short message about your project. I reply within one business day.</p>
+    <div class="mt-9 inline-flex flex-col sm:flex-row items-center gap-4 card !rounded-2xl px-6 py-5">
+      <span class="w-12 h-12 grid place-items-center rounded-xl" style="background:var(--grad);color:#1b0a12"><i data-lucide="mail" class="w-6 h-6"></i></span>
+      <div class="text-left"><div class="text-xs" style="color:var(--mute)">Email me directly</div><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=zeeshan.raja8892@gmail.com" target="_blank" rel="noopener" class="fd text-base sm:text-xl font-bold gt break-all">zeeshan.raja8892@gmail.com</a></div>
+    </div>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=zeeshan.raja8892@gmail.com&amp;su=Website%20project" target="_blank" rel="noopener" class="btn btn-p"><i data-lucide="send" class="w-4 h-4"></i>Send an email</a>
+      <button id="copy" type="button" class="btn btn-g"><i data-lucide="copy" class="w-4 h-4"></i><span>Copy email address</span></button>
+    </div>
+  </div></div>
+</section>
+</main>
+<footer class="px-5 pb-10 text-center text-sm" style="color:var(--mute)">&copy; <span id="yr"></span> Zeeshan Raja &middot; Built with HTML, CSS and a lot of chai</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+var $=function(s){return document.querySelector(s)};
+var ic=function(n,c){return '<i data-lucide="'+n+'" class="'+(c||'w-5 h-5')+'"></i>'};
+var wrap=function(i,html){return '<div data-aos="fade-up" data-aos-delay="'+(i%4)*90+'"><div class="card tilt h-full">'+html+'</div></div>'};
+var why=[['zap','On-time delivery','I agree on a deadline and stick to it.'],['code-2','Clean, readable code','Simple HTML and CSS that is easy to update later.'],['message-circle','Honest communication','Regular updates and straight answers, always.'],['shield-check','Revisions included','We refine the page until you are happy.']];
+$('#why').innerHTML=why.map(function(w,i){return wrap(i,'<div class="p-6"><span class="w-11 h-11 grid place-items-center rounded-xl" style="background:rgba(255,77,141,.15);color:var(--pink)">'+ic(w[0])+'</span><h3 class="fd font-semibold mt-4 text-[15px]">'+w[1]+'</h3><p class="mt-2 text-sm" style="color:var(--mute)">'+w[2]+'</p></div>')}).join('');
+var skills=[['HTML','file-code',[['HTML5',90],['Semantic HTML',85],['Forms &amp; Tables',82],['SEO Basics',75]]],['CSS','palette',[['CSS3',88],['Flexbox',90],['CSS Grid',82],['Animations &amp; Transitions',78],['Media Queries',88]]],['Design to Code','pencil-ruler',[['Figma to HTML/CSS',80],['Pixel-perfect Layouts',82],['Cross-browser Testing',75],['Chrome DevTools',80]]]];
+$('#skills-grid').innerHTML=skills.map(function(s,i){return '<div data-aos="fade-up" data-aos-delay="'+i*100+'"><div class="card tilt h-full p-7"><div class="flex items-center gap-3 mb-6"><span class="w-10 h-10 grid place-items-center rounded-xl" style="background:rgba(255,159,67,.15);color:var(--org)">'+ic(s[1])+'</span><h3 class="fd text-lg font-semibold">'+s[0]+'</h3></div><div class="space-y-5">'+s[2].map(function(k){return '<div><div class="flex justify-between text-sm mb-2"><span>'+k[0]+'</span><span style="color:var(--mute)">'+k[1]+'%</span></div><div class="bar"><i style="--w:'+k[1]+'%"></i></div></div>'}).join('')+'</div></div></div>'}).join('');
+var services=[['layout-grid','Responsive Website Design','Pages that adapt smoothly from phones to large desktop screens using Flexbox, Grid and media queries.',['Mobile-first layouts','Clean, semantic HTML','Fast loading pages']],['pencil-ruler','Figma to HTML &amp; CSS','I convert your Figma or PSD designs into pixel-accurate web pages that match the original.',['Exact spacing and fonts','Reusable CSS classes','Cross-browser checked']],['sparkles','Landing Pages &amp; Animations','Eye-catching landing pages with CSS hover effects, transitions and scroll-friendly animations.',['Hover and focus effects','Keyframe animations','Optimized for speed']]];
+$('#services-grid').innerHTML=services.map(function(s,i){return wrap(i,'<div class="p-7"><span class="w-12 h-12 grid place-items-center rounded-xl" style="background:rgba(139,92,246,.18);color:#c4b5fd">'+ic(s[0],'w-6 h-6')+'</span><h3 class="fd text-lg font-semibold mt-5">'+s[1]+'</h3><p class="mt-3 text-sm leading-relaxed" style="color:var(--mute)">'+s[2]+'</p><ul class="mt-4 space-y-2 text-sm">'+s[3].map(function(x){return '<li class="flex gap-2"><span style="color:var(--amb)">'+ic('check','w-4 h-4 mt-0.5 shrink-0')+'</span>'+x+'</li>'}).join('')+'</ul></div>')}).join('');
+var projects=[['E-Commerce Storefront','shopping-bag','linear-gradient(135deg,#ff4d8d,#ff9f43)','A responsive online store layout with a product grid, category filters, product cards with hover effects, and a clean cart and checkout design.',['HTML5','CSS3','Flexbox','Grid']],['SaaS Dashboard','layout-dashboard','linear-gradient(135deg,#8b5cf6,#ff4d8d)','A modern dashboard interface with a sidebar, stat cards, data tables and chart placeholders, styled with CSS variables and a polished dark look.',['HTML5','CSS3','CSS Grid','Variables']],['Weather API App','cloud-sun','linear-gradient(135deg,#ff9f43,#ffd75e)','A weather app interface with a search bar, current conditions card and a 5-day forecast layout, with smooth CSS transitions and animations.',['HTML5','CSS3','Animations','Responsive']]];
+$('#projects-grid').innerHTML=projects.map(function(p,i){return wrap(i,'<div class="shine h-44 grid place-items-center rounded-t-[22px]" style="background:'+p[2]+';color:#fff">'+ic(p[1],'w-16 h-16')+'</div><div class="p-6 flex flex-col"><h3 class="fd text-lg font-semibold">'+p[0]+'</h3><p class="mt-3 text-sm leading-relaxed" style="color:var(--mute)">'+p[3]+'</p><div class="flex flex-wrap gap-2 mt-5">'+p[4].map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>')}).join('');
+var steps=[['Share your idea','Tell me what you need and send any designs or references.'],['Plan and quote','I confirm the pages, timeline and price before starting.'],['Build and review','You see progress early and we adjust until it feels right.'],['Launch and support','I deliver clean files and stay available for small fixes.']];
+$('#steps').innerHTML=steps.map(function(s,i){return wrap(i,'<div class="p-6"><div class="fd text-3xl font-extrabold gt">0'+(i+1)+'</div><h3 class="fd font-semibold mt-3 text-[15px]">'+s[0]+'</h3><p class="mt-2 text-sm" style="color:var(--mute)">'+s[1]+'</p></div>')}).join('');
+var mq=['HTML5','CSS3','Flexbox','CSS Grid','Responsive Design','Figma to Code','Animations','Pixel-perfect'];
+var mqh=mq.map(function(m){return '<span class="px-6 whitespace-nowrap"><span class="gt">&#10022;</span> '+m+'</span>'}).join('');$('#marq').innerHTML=mqh+mqh;
+$('#yr').textContent=new Date().getFullYear();
+try{lucide.createIcons()}catch(e){}
+
+/* preloader + AOS start */
+var started=false;
+function start(){if(started)return;started=true;$('#pre').classList.add('done');
+ try{AOS.init({duration:800,once:true,offset:60})}catch(e){document.querySelectorAll('[data-aos]').forEach(function(el){el.classList.add('aos-animate')})}
+ type();}
+var n=0,t=setInterval(function(){n+=Math.ceil(Math.random()*9);if(n>=100){n=100;clearInterval(t);setTimeout(start,250)}$('#pc').textContent=n;$('#pb').style.width=n+'%'},70);
+setTimeout(start,5000);
+
+/* typing */
+var roles=['HTML Developer','CSS Specialist','Responsive Web Designer','Figma to Code Expert'],ri=0,ci=0,del=false;
+function type(){var w=roles[ri],el=$('#typed');el.textContent=w.slice(0,ci);
+ if(!del&&ci===w.length){del=true;return setTimeout(type,1500)}
+ if(del&&ci===0){del=false;ri=(ri+1)%roles.length}
+ ci+=del?-1:1;setTimeout(type,del?40:80)}
+
+/* count-up */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target,end=+el.dataset.count,s=0,st=Math.max(1,Math.ceil(end/40));var c=setInterval(function(){s=Math.min(end,s+st);el.textContent=s;if(s>=end)clearInterval(c)},40)})},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(function(el){io.observe(el)});
+
+/* scroll progress, cursor glow, card tilt + spotlight */
+addEventListener('scroll',function(){var h=document.documentElement;$('#prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+var fine=matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(fine){addEventListener('mousemove',function(e){$('#glow').style.transform='translate('+e.clientX+'px,'+e.clientY+'px)'});
+ document.addEventListener('mousemove',function(e){var c=e.target.closest&&e.target.closest('.card');if(!c)return;var r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;c.style.setProperty('--mx',x+'px');c.style.setProperty('--my',y+'px');
+  if(c.classList.contains('tilt'))c.style.transform='perspective(900px) rotateX('+((y/r.height-.5)*-7)+'deg) rotateY('+((x/r.width-.5)*7)+'deg) translateY(-4px)'});
+ document.addEventListener('mouseout',function(e){var c=e.target.closest&&e.target.closest('.tilt');if(c)c.style.transform=''})}
+
+/* copy email */
+$('#copy').addEventListener('click',function(){var l=this.querySelector('span'),m='zeeshan.raja8892@gmail.com';
+ try{navigator.clipboard.writeText(m).then(function(){l.textContent='Copied!';setTimeout(function(){l.textContent='Copy email address'},2000)},function(){l.textContent=m})}catch(e){l.textContent=m}});
+</script>
+</body>
+</html>

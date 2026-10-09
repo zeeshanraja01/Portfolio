@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="theme-color" content="#0b0610">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Zeeshan Raja | HTML &amp; CSS Front-End Developer</title>
 <meta name="description" content="Zeeshan Raja builds pixel-perfect, responsive websites with HTML and CSS. Available for freelance projects.">
@@ -57,6 +58,20 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-grad
 @keyframes sh{60%,100%{left:130%}}
 nav a.l{color:var(--mute);transition:color .2s}nav a.l:hover{color:#fff}
 a:focus-visible,button:focus-visible{outline:2px solid var(--amb);outline-offset:3px}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#hdr{transition:transform .4s cubic-bezier(.2,.8,.2,1);will-change:transform}
+#hdr.hide{transform:translate3d(0,-170%,0)}
+.btn{min-height:44px;justify-content:center}
+.btn-wa{background:#25D366;color:#06210f;box-shadow:0 0 28px -8px rgba(37,211,102,.75)}
+.logo{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex:none;background:rgba(255,255,255,.09)}
+.modal{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:calc(1rem + env(safe-area-inset-top,0px)) 1rem calc(1rem + env(safe-area-inset-bottom,0px));background:rgba(5,2,10,.74);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;overscroll-behavior:contain}
+.modal.open{opacity:1;visibility:visible}
+.modal .modal-box{width:100%;max-width:440px;max-height:100%;overflow-y:auto;padding:1.6rem;background:rgba(18,10,28,.94);transform:translateY(24px) scale(.97);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.modal.open .modal-box{transform:none}
+.opt{display:flex;align-items:center;gap:.9rem;padding:.9rem 1rem;min-height:68px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.05);transition:border-color .2s,transform .2s,background .2s}
+.opt:hover{border-color:var(--pink);background:rgba(255,255,255,.09);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){#hdr,.modal,.modal .modal-box{transition:none}}
 /* AOS core (inlined; external stylesheets are blocked) */
 [data-aos]{opacity:0;transition-property:opacity,transform;transition-timing-function:cubic-bezier(.2,.7,.2,1);transition-duration:.8s}
 [data-aos].aos-animate{opacity:1;transform:none}
@@ -74,11 +89,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--amb);outline-offset
   <div class="fd text-sm" style="color:var(--mute)"><span id="pc">0</span>% &middot; Loading portfolio</div>
 </div></div>
 
-<header class="fixed top-0 inset-x-0 z-50" style="padding-top:env(safe-area-inset-top,0px)">
+<header id="hdr" class="fixed top-0 inset-x-0 z-50" style="padding-top:env(safe-area-inset-top,0px)">
   <nav class="mx-auto mt-3 max-w-6xl px-4"><div class="card !rounded-full flex items-center justify-between pl-5 pr-2 py-2">
     <a href="#home" class="fd font-bold text-base tracking-tight">ZEESHAN<span class="gt">.R</span></a>
     <div class="hidden md:flex gap-8 text-sm"><a class="l" href="#skills">Skills</a><a class="l" href="#services">Services</a><a class="l" href="#projects">Projects</a><a class="l" href="#process">Process</a><a class="l" href="#contact">Contact</a></div>
-    <a href="#contact" class="btn btn-p !py-2 !px-4 !text-sm"><i data-lucide="mail" class="w-4 h-4"></i>Hire me</a>
+    <button type="button" class="btn btn-p !py-2 !px-4 !text-sm js-contact"><i data-lucide="mail" class="w-4 h-4"></i>Hire me</button>
   </div></nav>
 </header>
 
@@ -98,7 +113,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--amb);outline-offset
     <p class="mt-4 max-w-xl leading-relaxed" style="color:var(--mute)" data-aos="fade-up" data-aos-delay="260">I have 1 year of focused experience turning designs into clean, fast and fully responsive websites. I keep my code simple, finish on time and tell you honestly where your project stands, so you always know what to expect.</p>
     <div class="mt-8 flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="320">
       <a href="#projects" class="btn btn-p"><i data-lucide="folder-open" class="w-4 h-4"></i>See my work</a>
-      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=zeeshan.raja8892@gmail.com" target="_blank" rel="noopener" class="btn btn-g"><i data-lucide="mail" class="w-4 h-4"></i>Email me</a>
+      <button type="button" class="btn btn-g js-contact"><i data-lucide="message-circle" class="w-4 h-4"></i>Contact me</button>
     </div>
     <div class="mt-10 grid grid-cols-3 gap-3 max-w-md" data-aos="fade-up" data-aos-delay="380">
       <div class="card p-4"><div class="fd text-2xl font-bold gt"><span data-count="1">0</span>+</div><div class="text-xs mt-1" style="color:var(--mute)">Year experience</div></div>
@@ -163,17 +178,29 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--amb);outline-offset
   <div data-aos="fade-up"><div class="card p-8 sm:p-14 text-center shine" style="box-shadow:0 0 80px -24px rgba(255,77,141,.55)">
     <h2 class="fd text-3xl sm:text-5xl font-bold tracking-tight leading-tight">Got a website idea?<br><span class="gt">Let's build it.</span></h2>
     <p class="mt-4 max-w-xl mx-auto" style="color:var(--mute)">Send me a short message about your project. I reply within one business day.</p>
-    <div class="mt-9 inline-flex flex-col sm:flex-row items-center gap-4 card !rounded-2xl px-6 py-5">
-      <span class="w-12 h-12 grid place-items-center rounded-xl" style="background:var(--grad);color:#1b0a12"><i data-lucide="mail" class="w-6 h-6"></i></span>
-      <div class="text-left"><div class="text-xs" style="color:var(--mute)">Email me directly</div><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=zeeshan.raja8892@gmail.com" target="_blank" rel="noopener" class="fd text-base sm:text-xl font-bold gt break-all">zeeshan.raja8892@gmail.com</a></div>
+    <div class="mt-9 grid sm:grid-cols-2 gap-4 text-left">
+      <a data-email href="#" class="card tilt flex items-center gap-4 p-5"><span class="logo" data-logo="gm" data-size="28"></span><span class="min-w-0"><span class="block text-xs" style="color:var(--mute)">Email</span><span class="block fd text-[13px] sm:text-sm font-bold gt break-all">zeeshan.raja8892@gmail.com</span></span></a>
+      <a data-wa href="#" class="card tilt flex items-center gap-4 p-5"><span class="logo" data-logo="wa" data-size="28"></span><span class="min-w-0"><span class="block text-xs" style="color:var(--mute)">WhatsApp</span><span class="block fd text-sm font-bold gt">+92 319 0928892</span></span></a>
     </div>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=zeeshan.raja8892@gmail.com&amp;su=Website%20project" target="_blank" rel="noopener" class="btn btn-p"><i data-lucide="send" class="w-4 h-4"></i>Send an email</a>
+      <a data-email href="#" class="btn btn-p"><span data-logo="gm" data-size="20" style="display:flex;background:#fff;border-radius:6px;padding:2px"></span>Send an email</a>
+      <a data-wa href="#" class="btn btn-wa"><span data-logo="wa" data-size="20" style="display:flex;background:#fff;border-radius:50%;padding:1px"></span>Chat on WhatsApp</a>
       <button id="copy" type="button" class="btn btn-g"><i data-lucide="copy" class="w-4 h-4"></i><span>Copy email address</span></button>
     </div>
   </div></div>
 </section>
 </main>
+<div id="cm" class="modal" role="dialog" aria-modal="true" aria-labelledby="cmT">
+  <div class="card modal-box">
+    <button id="cmX" type="button" aria-label="Close" style="position:absolute;z-index:10;top:.6rem;right:.6rem;width:44px;height:44px;cursor:pointer;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.06);display:grid;place-items:center"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <h3 id="cmT" class="fd text-xl font-bold pr-10">Let's <span class="gt">talk</span></h3>
+    <p class="mt-2 text-sm" style="color:var(--mute)">Choose how you'd like to reach me.</p>
+    <div class="grid gap-3 mt-5">
+      <a data-email href="#" class="opt"><span class="logo" data-logo="gm" data-size="26"></span><span class="min-w-0 flex-1"><b class="block text-[15px]">Email</b><small class="block break-all" style="color:var(--mute)">zeeshan.raja8892@gmail.com</small></span><i data-lucide="arrow-up-right" class="w-5 h-5 shrink-0"></i></a>
+      <a data-wa href="#" class="opt"><span class="logo" data-logo="wa" data-size="26"></span><span class="min-w-0 flex-1"><b class="block text-[15px]">WhatsApp</b><small class="block" style="color:var(--mute)">+92 319 0928892</small></span><i data-lucide="arrow-up-right" class="w-5 h-5 shrink-0"></i></a>
+    </div>
+  </div>
+</div>
 <footer class="px-5 pb-10 text-center text-sm" style="color:var(--mute)">&copy; <span id="yr"></span> Zeeshan Raja &middot; Built with HTML, CSS and a lot of chai</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
@@ -227,6 +254,42 @@ if(fine){addEventListener('mousemove',function(e){$('#glow').style.transform='tr
 /* copy email */
 $('#copy').addEventListener('click',function(){var l=this.querySelector('span'),m='zeeshan.raja8892@gmail.com';
  try{navigator.clipboard.writeText(m).then(function(){l.textContent='Copied!';setTimeout(function(){l.textContent='Copy email address'},2000)},function(){l.textContent=m})}catch(e){l.textContent=m}});
+</script>
+<script>
+(function(){
+var EM='zeeshan.raja8892@gmail.com',WA='923190928892',SUB=encodeURIComponent('Website project');
+var waUrl='https://wa.me/'+WA+'?text='+encodeURIComponent("Hi Zeeshan, I saw your portfolio and I'd like to discuss a website project.");
+var mobile=/Android|iPhone|iPad|iPod|Mobile|Opera Mini/i.test(navigator.userAgent)||(navigator.maxTouchPoints>1&&/Mac/i.test(navigator.platform));
+var P={wa:['#25D366','M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'],gm:['#EA4335','M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z']};
+document.querySelectorAll('[data-logo]').forEach(function(el){var p=P[el.dataset.logo],z=el.dataset.size||24;el.innerHTML='<svg viewBox="0 0 24 24" width="'+z+'" height="'+z+'" aria-hidden="true"><path fill="'+p[0]+'" d="'+p[1]+'"/></svg>'});
+document.querySelectorAll('[data-email]').forEach(function(a){
+  if(mobile){a.href='mailto:'+EM+'?subject='+SUB}                 /* phones/tablets: opens the default mail app */
+  else{a.href='https://mail.google.com/mail/?view=cm&fs=1&to='+EM+'&su='+SUB;a.target='_blank';a.rel='noopener'} /* desktop: Gmail compose */
+});
+document.querySelectorAll('[data-wa]').forEach(function(a){a.href=waUrl;a.target='_blank';a.rel='noopener'});
+
+/* contact popup */
+var cm=document.getElementById('cm'),lastF=null;
+function openM(){lastF=document.activeElement;cm.classList.add('open');document.documentElement.style.overflow=document.body.style.overflow='hidden';document.getElementById('cmX').focus()}
+function closeM(){cm.classList.remove('open');document.documentElement.style.overflow=document.body.style.overflow='';if(lastF&&lastF.focus)lastF.focus()}
+document.querySelectorAll('.js-contact').forEach(function(b){b.addEventListener('click',openM)});
+
+cm.addEventListener('click',function(e){if(e.target===cm||(e.target.closest&&e.target.closest('#cmX')))closeM()});
+cm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setTimeout(closeM,200)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cm.classList.contains('open'))closeM()});
+
+/* header: hides while scrolling down, returns on the slightest scroll up */
+var hdr=document.getElementById('hdr'),lastY=window.pageYOffset||0,tick=false;
+function upd(){
+  var max=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
+  var y=Math.min(Math.max(0,window.pageYOffset||document.documentElement.scrollTop||0),max),d=y-lastY;
+  if(y<60){hdr.classList.remove('hide');lastY=y}
+  else if(d>8){hdr.classList.add('hide');lastY=y}
+  else if(d<-4){hdr.classList.remove('hide');lastY=y}
+  tick=false}
+window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
+hdr.addEventListener('focusin',function(){hdr.classList.remove('hide')});
+})();
 </script>
 </body>
 </html>

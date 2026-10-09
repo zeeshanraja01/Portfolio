@@ -15,7 +15,7 @@
 :root{--bg:#0b0610;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.1);--text:#f4eefb;--mute:#a99bbd;--pink:#ff4d8d;--org:#ff9f43;--amb:#ffd75e;--vio:#8b5cf6;--grad:linear-gradient(90deg,#ff4d8d,#ff9f43 60%,#ffd75e);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
-body{background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden;overflow-x:clip}
 body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(620px 420px at 10% 5%,rgba(255,77,141,.22),transparent 70%),radial-gradient(560px 460px at 92% 25%,rgba(139,92,246,.24),transparent 70%),radial-gradient(520px 400px at 45% 100%,rgba(255,159,67,.14),transparent 70%)}
 .fd{font-family:Unbounded,Manrope,sans-serif}
 .gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -72,6 +72,13 @@ a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .opt{display:flex;align-items:center;gap:.9rem;padding:.9rem 1rem;min-height:68px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.05);transition:border-color .2s,transform .2s,background .2s}
 .opt:hover{border-color:var(--pink);background:rgba(255,255,255,.09);transform:translateY(-2px)}
 @media (prefers-reduced-motion:reduce){#hdr,.modal,.modal .modal-box{transition:none}}
+html{overflow-x:hidden}
+#hdr{left:0;right:0;width:100%;max-width:100%}
+#hdr nav{max-width:min(72rem,100%)}
+.em{display:block;white-space:nowrap;overflow:hidden;font-family:Manrope,system-ui,sans-serif;font-weight:800;font-size:clamp(12px,3.6vw,17px);line-height:1.35}
+.modal .modal-box{overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
+.modal .modal-box::-webkit-scrollbar{display:none;width:0;height:0}
+@media (max-width:420px){.logo{width:42px;height:42px;border-radius:12px}#cm .modal-box{padding:1.2rem}#hdr nav .card{padding-left:1rem!important}#hdr nav a.fd{font-size:.9rem!important}#hdr .btn{padding:.5rem .85rem!important;font-size:.82rem!important}}
 /* AOS core (inlined; external stylesheets are blocked) */
 [data-aos]{opacity:0;transition-property:opacity,transform;transition-timing-function:cubic-bezier(.2,.7,.2,1);transition-duration:.8s}
 [data-aos].aos-animate{opacity:1;transform:none}
@@ -175,12 +182,12 @@ a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 
 <!-- CONTACT -->
 <section id="contact" class="mx-auto max-w-4xl px-5 py-28">
-  <div data-aos="fade-up"><div class="card p-8 sm:p-14 text-center shine" style="box-shadow:0 0 80px -24px rgba(255,77,141,.55)">
+  <div data-aos="fade-up"><div class="card p-5 sm:p-10 lg:p-14 text-center shine" style="box-shadow:0 0 80px -24px rgba(255,77,141,.55)">
     <h2 class="fd text-3xl sm:text-5xl font-bold tracking-tight leading-tight">Got a website idea?<br><span class="gt">Let's build it.</span></h2>
     <p class="mt-4 max-w-xl mx-auto" style="color:var(--mute)">Send me a short message about your project. I reply within one business day.</p>
-    <div class="mt-9 grid sm:grid-cols-2 gap-4 text-left">
-      <a data-email href="#" class="card tilt flex items-center gap-4 p-5"><span class="logo" data-logo="gm" data-size="28"></span><span class="min-w-0"><span class="block text-xs" style="color:var(--mute)">Email</span><span class="block fd text-[13px] sm:text-sm font-bold gt break-all">zeeshan.raja8892@gmail.com</span></span></a>
-      <a data-wa href="#" class="card tilt flex items-center gap-4 p-5"><span class="logo" data-logo="wa" data-size="28"></span><span class="min-w-0"><span class="block text-xs" style="color:var(--mute)">WhatsApp</span><span class="block fd text-sm font-bold gt">+92 319 0928892</span></span></a>
+    <div class="mt-9 grid md:grid-cols-2 gap-4 text-left">
+      <a data-email href="#" class="card tilt flex items-center gap-3 sm:gap-4 p-4 sm:p-5"><span class="logo" data-logo="gm" data-size="28"></span><span class="min-w-0 flex-1"><span class="block text-xs" style="color:var(--mute)">Email</span><span class="em gt" data-fit>zeeshan.raja8892@gmail.com</span></span></a>
+      <a data-wa href="#" class="card tilt flex items-center gap-3 sm:gap-4 p-4 sm:p-5"><span class="logo" data-logo="wa" data-size="28"></span><span class="min-w-0"><span class="block text-xs" style="color:var(--mute)">WhatsApp</span><span class="block fd text-sm font-bold gt">+92 319 0928892</span></span></a>
     </div>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <a data-email href="#" class="btn btn-p"><span data-logo="gm" data-size="20" style="display:flex;background:#fff;border-radius:6px;padding:2px"></span>Send an email</a>
@@ -196,8 +203,8 @@ a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
     <h3 id="cmT" class="fd text-xl font-bold pr-10">Let's <span class="gt">talk</span></h3>
     <p class="mt-2 text-sm" style="color:var(--mute)">Choose how you'd like to reach me.</p>
     <div class="grid gap-3 mt-5">
-      <a data-email href="#" class="opt"><span class="logo" data-logo="gm" data-size="26"></span><span class="min-w-0 flex-1"><b class="block text-[15px]">Email</b><small class="block break-all" style="color:var(--mute)">zeeshan.raja8892@gmail.com</small></span><i data-lucide="arrow-up-right" class="w-5 h-5 shrink-0"></i></a>
-      <a data-wa href="#" class="opt"><span class="logo" data-logo="wa" data-size="26"></span><span class="min-w-0 flex-1"><b class="block text-[15px]">WhatsApp</b><small class="block" style="color:var(--mute)">+92 319 0928892</small></span><i data-lucide="arrow-up-right" class="w-5 h-5 shrink-0"></i></a>
+      <a data-email href="#" class="opt"><span class="logo" data-logo="gm" data-size="26"></span><span class="min-w-0 flex-1"><b class="block text-[15px]">Email</b><small class="em" data-fit style="color:var(--mute);font-weight:600">zeeshan.raja8892@gmail.com</small></span></a>
+      <a data-wa href="#" class="opt"><span class="logo" data-logo="wa" data-size="26"></span><span class="min-w-0 flex-1"><b class="block text-[15px]">WhatsApp</b><small class="block" style="color:var(--mute)">+92 319 0928892</small></span></a>
     </div>
   </div>
 </div>
@@ -289,6 +296,15 @@ function upd(){
   tick=false}
 window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
 hdr.addEventListener('focusin',function(){hdr.classList.remove('hide')});
+/* keep the header exactly inside the visible screen (Android Chrome fix) */
+function fitHdr(){var v=window.visualViewport;if(!v)return;var cw=document.documentElement.clientWidth;
+  if(v.scale<=1.01&&Math.abs(v.width-cw)>2){hdr.style.left=v.offsetLeft+'px';hdr.style.right='auto';hdr.style.width=v.width+'px'}
+  else{hdr.style.left='';hdr.style.right='';hdr.style.width=''}}
+if(window.visualViewport){visualViewport.addEventListener('resize',fitHdr);visualViewport.addEventListener('scroll',fitHdr)}
+window.addEventListener('resize',fitHdr);window.addEventListener('orientationchange',fitHdr);window.addEventListener('load',fitHdr);fitHdr();
+/* shrink the email text until it fits on ONE line on any screen */
+function fit(){document.querySelectorAll('[data-fit]').forEach(function(el){el.style.fontSize='';var fs=parseFloat(getComputedStyle(el).fontSize),n=0;while(el.scrollWidth>el.clientWidth+0.5&&fs>8&&n++<60){fs-=.5;el.style.fontSize=fs+'px'}})}
+fit();window.addEventListener('resize',fit);window.addEventListener('load',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
 })();
 </script>
 </body>

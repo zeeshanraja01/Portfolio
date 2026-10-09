@@ -111,7 +111,7 @@ html{overflow-x:hidden;color-scheme:dark}
 <section id="home" class="mx-auto max-w-6xl px-5 pt-36 pb-16 grid lg:grid-cols-[1.2fr_.8fr] gap-10 items-center">
   <div>
     <div data-aos="fade-up" class="card inline-flex items-center gap-3 !rounded-full px-4 py-2 text-sm"><span class="dot w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span class="text-emerald-300 font-semibold">Available for new projects</span></div>
-    <p class="mt-7 text-lg" style="color:var(--mute)" data-aos="fade-up" data-aos-delay="100">Hi, I'm <b style="color:var(--text)">Zeeshan Raja</b></p>
+    <p class="mt-7 text-lg" style="color:var(--mute)" data-aos="fade-up" data-aos-delay="100">Hi, I'm <b style="color:var(--text)">Zeeshan</b></p>
     <h1 class="fd font-extrabold uppercase leading-[1.05] tracking-tight mt-2" style="font-size:clamp(2rem,6.2vw,4.6rem)">
       <span class="rise"><span style="--d:1.8s">I build</span></span>
       <span class="rise"><span style="--d:1.95s">pixel-perfect</span></span>
@@ -206,7 +206,7 @@ html{overflow-x:hidden;color-scheme:dark}
     </div>
   </div>
 </div>
-<footer class="px-5 pb-10 text-center text-sm" style="color:var(--mute)">&copy; <span id="yr"></span> Zeeshan Raja &middot; Built with HTML, CSS and a lot of chai</footer>
+<footer class="px-5 pb-10 text-center text-sm" style="color:var(--mute)">&copy; <span id="yr"></span> <span class="fd font-bold" style="color:var(--text)">ZEESHAN<span class="gt">.R</span></span> &middot; Built with HTML, CSS and a lot of chai</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -301,6 +301,23 @@ window.addEventListener('resize',fitHdr);window.addEventListener('orientationcha
 /* shrink the email text until it fits on ONE line on any screen */
 function fit(){document.querySelectorAll('[data-fit]').forEach(function(el){el.style.fontSize='';var fs=parseFloat(getComputedStyle(el).fontSize),n=0;while(el.scrollWidth>el.clientWidth+0.5&&fs>8&&n++<60){fs-=.5;el.style.fontSize=fs+'px'}})}
 fit();window.addEventListener('resize',fit);window.addEventListener('load',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+/* nav links: scroll so the chosen section sits in the vertical centre of the screen */
+var reduceM=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+function goTo(id){
+  var sec=document.getElementById(id);if(!sec)return;
+  var vh=window.innerHeight,maxY=Math.max(0,document.documentElement.scrollHeight-vh),y=0;
+  if(id!=='home'){
+    var cs=getComputedStyle(sec),pt=parseFloat(cs.paddingTop)||0,pb=parseFloat(cs.paddingBottom)||0,
+        top=sec.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop||0)+pt,h=sec.offsetHeight-pt-pb;
+    y=(h+110<vh)?top+h/2-vh/2:top-96; /* tall sections (phones): start just below the header */
+  }
+  y=Math.min(Math.max(0,y),maxY);
+  window.scrollTo({top:y,behavior:reduceM?'auto':'smooth'});
+}
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){
+  var id=(a.getAttribute('href')||'').slice(1);if(!id||!document.getElementById(id))return;
+  e.preventDefault();goTo(id);try{history.replaceState(null,'','#'+id)}catch(err){}
+})});
 })();
 </script>
 </body>

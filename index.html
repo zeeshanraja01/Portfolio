@@ -72,6 +72,7 @@ a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .opt{display:flex;align-items:center;gap:.9rem;padding:.9rem 1rem;min-height:68px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.05);transition:border-color .2s,transform .2s,background .2s}
 .opt:hover{border-color:var(--pink);background:rgba(255,255,255,.09);transform:translateY(-2px)}
 @media (prefers-reduced-motion:reduce){#hdr,.modal,.modal .modal-box{transition:none}}
+.stat{font-size:clamp(1rem,5.4vw,1.5rem);line-height:1.15;white-space:nowrap;overflow:hidden}
 html{overflow-x:hidden}
 #hdr{left:0;right:0;width:100%;max-width:100%}
 #hdr nav{max-width:min(72rem,100%)}
@@ -123,9 +124,9 @@ html{overflow-x:hidden}
       <button type="button" class="btn btn-g js-contact"><i data-lucide="message-circle" class="w-4 h-4"></i>Contact me</button>
     </div>
     <div class="mt-10 grid grid-cols-3 gap-3 max-w-md" data-aos="fade-up" data-aos-delay="380">
-      <div class="card p-4"><div class="fd text-2xl font-bold gt"><span data-count="1">0</span>+</div><div class="text-xs mt-1" style="color:var(--mute)">Year experience</div></div>
-      <div class="card p-4"><div class="fd text-2xl font-bold gt"><span data-count="10">0</span>+</div><div class="text-xs mt-1" style="color:var(--mute)">Pages built</div></div>
-      <div class="card p-4"><div class="fd text-2xl font-bold gt"><span data-count="100">0</span>%</div><div class="text-xs mt-1" style="color:var(--mute)">Responsive</div></div>
+      <div class="card p-3 sm:p-4"><div class="fd stat font-bold gt"><span data-count="1">0</span>+</div><div class="text-xs mt-1" style="color:var(--mute)">Year experience</div></div>
+      <div class="card p-3 sm:p-4"><div class="fd stat font-bold gt"><span data-count="10">0</span>+</div><div class="text-xs mt-1" style="color:var(--mute)">Pages built</div></div>
+      <div class="card p-3 sm:p-4"><div class="fd stat font-bold gt"><span data-count="100">0</span>%</div><div class="text-xs mt-1" style="color:var(--mute)">Responsive</div></div>
     </div>
   </div>
   <div data-aos="zoom-in" data-aos-delay="250" class="relative h-[380px] sm:h-[440px]">
@@ -192,7 +193,7 @@ html{overflow-x:hidden}
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <a data-email href="#" class="btn btn-p"><span data-logo="gm" data-size="20" style="display:flex;background:#fff;border-radius:6px;padding:2px"></span>Send an email</a>
       <a data-wa href="#" class="btn btn-wa"><span data-logo="wa" data-size="20" style="display:flex;background:#fff;border-radius:50%;padding:1px"></span>Chat on WhatsApp</a>
-      <button id="copy" type="button" class="btn btn-g"><i data-lucide="copy" class="w-4 h-4"></i><span>Copy email address</span></button>
+
     </div>
   </div></div>
 </section>
@@ -258,9 +259,7 @@ if(fine){addEventListener('mousemove',function(e){$('#glow').style.transform='tr
   if(c.classList.contains('tilt'))c.style.transform='perspective(900px) rotateX('+((y/r.height-.5)*-7)+'deg) rotateY('+((x/r.width-.5)*7)+'deg) translateY(-4px)'});
  document.addEventListener('mouseout',function(e){var c=e.target.closest&&e.target.closest('.tilt');if(c)c.style.transform=''})}
 
-/* copy email */
-$('#copy').addEventListener('click',function(){var l=this.querySelector('span'),m='zeeshan.raja8892@gmail.com';
- try{navigator.clipboard.writeText(m).then(function(){l.textContent='Copied!';setTimeout(function(){l.textContent='Copy email address'},2000)},function(){l.textContent=m})}catch(e){l.textContent=m}});
+
 </script>
 <script>
 (function(){
